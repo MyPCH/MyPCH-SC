@@ -1,0 +1,41 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger REST Article
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/api"
+
+# Paths supported by the server application
+paths:
+  /data:
+    get:
+      operationId: app.rest.get
+      summary: "The diabetes data structure supported by the server application"
+      description: "Read the list of diabetes data"
+      responses:
+        200:
+          description: "Successful read diabetes data"
+    post:
+      operationId: app.rest.post
+      summary: Insert diabetes records 
+      description: Insert diabetes records 
+      parameters:
+        - name: pump
+          in: body
+          description: diabetes records to insert
+          required: true
+          schema:
+             type: array
+             items:
+                  "$ref": "#/definitions/inBody"
+      responses:
+        201:
+          description: Successfully inserted diabetes records
+definitions:
+  inBody:
+    type: object
